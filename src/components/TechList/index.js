@@ -1,25 +1,14 @@
 import React, { useState, useEffect } from "react";
-
-// import { Container } from './styles';
+import { useSelector, useDispatch } from "react-redux";
 
 export default function TechList() {
-  const [techs, setTechs] = useState([]);
   const [newTech, setNewTech] = useState("");
 
-  useEffect(() => {
-    const techs = localStorage.getItem("techs");
-
-    if (techs) {
-      setTechs(JSON.parse(techs));
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("techs", JSON.stringify(techs));
-  }, [techs]);
+  const dispatch = useDispatch();
+  const techs = useSelector(state => state.techs);
 
   function handleAddTech() {
-    setTechs([...techs, newTech]);
+    dispatch({ type: "ADD_TECH", payload: { tech: newTech } });
     setNewTech("");
   }
 
@@ -27,7 +16,7 @@ export default function TechList() {
     <form data-testid="tech-form" onSubmit={handleAddTech}>
       <ul data-testid="tech-list">
         {techs.map(tech => (
-          <li key="tech">{tech}</li>
+          <li key={tech}>{tech}</li>
         ))}
       </ul>
       <label htmlFor="tech">Tech</label>
