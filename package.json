@@ -1,13 +1,13 @@
 {
-  "name": "test-web-reactjs",
+  "name": "modulo12",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@testing-library/jest-dom": "^4.1.2",
+    "@testing-library/react": "^9.3.0",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
-    "react-redux": "^7.1.1",
-    "react-scripts": "3.2.0",
-    "redux": "^4.0.4"
+    "react-scripts": "3.2.0"
   },
   "scripts": {
     "start": "react-app-rewired start",
@@ -19,14 +19,13 @@
     "testMatch": [
       "**/__tests__/**/*.test.js"
     ],
-    "setupFilesAfterEnv": [
-      "@testing-library/react/cleanup-after-each",
-      "@testing-library/jest-dom/extend-expect",
-      "jest-localstorage-mock"
-    ],
     "moduleNameMapper": {
       "^~/(.*)": "<rootDir>/src/$1"
-    }
+    },
+    "setupFilesAfterEnv": [
+      "@testing-library/jest-dom/extend-expect",
+      "jest-localstorage-mock"
+    ]
   },
   "browserslist": {
     "production": [
@@ -41,10 +40,22 @@
     ]
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^4.2.3",
-    "@testing-library/react": "^9.3.1",
-    "@types/jest": "^24.0.21",
+    "@types/jest": "^24.0.19",
+    "babel-eslint": "^10.0.3",
+    "babel-plugin-root-import": "^6.4.1",
+    "customize-cra": "^0.8.0",
+    "eslint": "^6.5.1",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.4.0",
+    "eslint-import-resolver-babel-plugin-root-import": "^1.1.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^22.20.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-react": "^7.16.0",
+    "eslint-plugin-react-hooks": "^1.7.0",
     "jest-localstorage-mock": "^2.4.0",
+    "prettier": "^1.18.2",
     "react-app-rewired": "^2.1.4"
   }
 }

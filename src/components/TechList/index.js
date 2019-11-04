@@ -1,15 +1,27 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+/* eslint-disable jsx-a11y/label-has-associated-control */
+import React, { useState, useEffect } from 'react';
+
+// import { Container } from './styles';
 
 export default function TechList() {
-  const [newTech, setNewTech] = useState("");
+  const [techs, setTechs] = useState([]);
+  const [newTech, setNewTech] = useState('');
 
-  const dispatch = useDispatch();
-  const techs = useSelector(state => state.techs);
+  useEffect(() => {
+    const storageTechs = localStorage.getItem('techs');
+
+    if (storageTechs) {
+      setTechs(JSON.parse(storageTechs));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('techs', JSON.stringify(techs));
+  }, [techs]);
 
   function handleAddTech() {
-    dispatch({ type: "ADD_TECH", payload: { tech: newTech } });
-    setNewTech("");
+    setTechs([...techs, newTech]);
+    setNewTech('');
   }
 
   return (
@@ -19,13 +31,18 @@ export default function TechList() {
           <li key={tech}>{tech}</li>
         ))}
       </ul>
+
       <label htmlFor="tech">Tech</label>
       <input
-        id="tech"
+        type="text"
         value={newTech}
+        id="tech"
         onChange={e => setNewTech(e.target.value)}
       />
-      <button type="submit">Adicionar</button>
+
+      <button type="button" onClick={handleAddTech}>
+        Adicionar
+      </button>
     </form>
   );
 }
