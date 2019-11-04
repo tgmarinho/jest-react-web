@@ -1,7 +1,4 @@
-import reducer, {
-  INTIAL_STATE,
-  INITIAL_STATE,
-} from '~/store/modules/techs/reducers';
+import reducer, { INITIAL_STATE } from '~/store/modules/techs/reducers';
 
 import * as Techs from '~/store/modules/techs/actions';
 
